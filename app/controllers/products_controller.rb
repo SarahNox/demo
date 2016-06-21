@@ -16,16 +16,17 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @products = Product.all
   end
 
   def new
     @product = Product.new
-    @product.category_id = params[category_id]
+    # @product.category_id = params[category_id]
   end
 
   private
   def product_params
-    params.require(:product).permit(:name, :price, :quantity, :category_id)
+    params.require(:product).permit(:title, :description, :price, :category) #:quantity :category_id
   end
 
 end

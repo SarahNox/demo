@@ -7,8 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav id="nav">
+    <div id="nav_page">
+      <% if logged_in? %>
+      <%= link_to "Logout", logout_path, method: :destroy %>
+      <% else %>
+      <%= link_to "Login", login_path %>
+      <%= link_to "Sign up", signup_path %>
 
-<%= yield %>
+      <% end %>
+    </div>
+    <div id="items">
+      <% if logged_in? %>
+      <%= link_to "Products", root_path %>
+      <%= link_to "Cart", cart_path %>
+      <% end %>
+    </div>
+
+  </nav>
+  <%= yield %>
 
 </body>
 </html>

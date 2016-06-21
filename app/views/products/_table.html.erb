@@ -1,0 +1,18 @@
+
+<table class="table">
+<tr>
+  <th class= "col-sm-1"> Title </th>
+  <th class= "col-sm-1"> Description </th>
+  <th class= "col-sm-1"> Price </th>
+  <th class= "col-sm-3"> Category </th>
+</tr>
+
+<% @products.each do |product| %>
+<tr>
+  <td><%= product.title %></td>
+  <td><%= product.description %></td>
+  <td><%= product.price %></td>
+  <td><%= product.category %></td>
+</tr>
+<% end %>
+</table>
