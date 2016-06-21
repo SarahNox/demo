@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :products
   resources :admins
   resources :users
-  root 'users#index'
+  root 'products#index'
   get 'users/new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

@@ -18,9 +18,14 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def new
+    @product = Product.new
+    @product.category_id = params[category_id]
+  end
+
   private
   def product_params
-    params.require(:product).permit(:name, :price) #:quantity
+    params.require(:product).permit(:name, :price, :quantity, :category_id)
   end
 
 end
