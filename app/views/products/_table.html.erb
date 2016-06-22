@@ -1,7 +1,7 @@
-
+<div id="table">
 <table class="table">
 <tr>
-  <th class= "col-sm-1"> Title </th>
+  <th class= "col-sm-1"> Product </th>
   <th class= "col-sm-1"> Description </th>
   <th class= "col-sm-1"> Price </th>
   <th class= "col-sm-3"> Category </th>
@@ -9,10 +9,18 @@
 
 <% @products.each do |product| %>
 <tr>
-  <td><%= product.title %></td>
+  <td><%= product.name %></td>
   <td><%= product.description %></td>
   <td><%= product.price %></td>
-  <td><%= product.category %></td>
+  <td><%= Category.find(product.category_id).name %></td>
+  <td><%= link_to 'Add to Cart', cart_path %></td>
+  <td><% if current_user.admin? %>
+      <%= link_to 'Edit', edit_product_path(:id => product.id) %>
+      <% end %></td>
+  <td><% if current_user.admin? %>
+      <%= link_to 'Destroy', product, method: :delete %>
+      <% end %></td>
 </tr>
 <% end %>
 </table>
+</div>
