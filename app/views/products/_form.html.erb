@@ -1,7 +1,8 @@
-<%= form_for(@product) do |f| %>
+<div id="form">
+  <%= form_for(@product) do |f| %>
 <div class="field">
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
 </div>
 <div class="field">
   <%= f.label :description %><br>
@@ -13,10 +14,12 @@
 </div>
 <div class="field">
   <%= f.label :category %><br>
-  <%= f.text_field :category %>
+  <%= f.collection_select(:category_id, Category.all, :id, :name, :include_blank => "Please select") %>
 </div>
+
 
 <button type="submit" class="button">add item</button>
 <% end %>
+</div>
 
 

@@ -19,8 +19,12 @@
     </div>
     <div id="items">
       <% if logged_in? %>
-      <%= link_to "Products", root_path %>
-      <%= link_to "Cart", cart_path %>
+      <%= link_to "All Products", root_path %>
+      <%= link_to "Categories", root_path %>
+        <% if current_user.admin? %>
+        <%= link_to "Cart", cart_path %>
+        <%= link_to "Add New Products", new_product_path %>
+        <% end %>
       <% end %>
     </div>
 

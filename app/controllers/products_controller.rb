@@ -1,15 +1,16 @@
 class ProductsController < ApplicationController
   before_filter :admin_authorize, except: [:index, :show]
-  # create just for admin
+  # create, new, edit just for admin
 
   def index
     @products = Product.all
+    @product = Product.find_by_id(params[:product_id])
   end
 
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to @product, notice: 'You added a new product to the shop'
+      redirect_to @product
     else
       render 'new'
     end
@@ -24,9 +25,28 @@ class ProductsController < ApplicationController
     # @product.category_id = params[category_id]
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update_attributes(product_params)
+      redirect_to @product
+    else
+      render 'new'
+    end
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.delete
+    redirect_to root_path
+  end
+
   private
   def product_params
-    params.require(:product).permit(:title, :description, :price, :category) #:quantity :category_id
+    params.require(:product).permit(:name, :description, :price, :category, :category_id) #:category_id
   end
 
 end

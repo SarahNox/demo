@@ -1,0 +1,20 @@
+<h1>Products Index by Category</h1>
+
+<table class="table">
+<tr>
+  <th class= "col-sm-1"> Category </th>
+  <th class= "col-sm-1"> Product </th>
+  <th class= "col-sm-1"> Price </th>
+  <th class= "col-sm-3"> Description </th>
+</tr>
+
+<% @categories.each do |category| %>
+<tr>
+  <td><%= category.name %></td>
+  <td><%= product.title %></td>
+  <td><%= product.price %></td>
+  <td><%= product.decription %></td>
+</tr>
+<% end %>
+</table>
+

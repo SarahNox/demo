@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  resources :products do 
-    resources :categories
-  end
-  resources :admins
+  resources :products
+  resources :categories
   resources :users
   root 'products#index'
   get 'users/new'
