@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    # @product.category_id = params[category_id]
   end
 
   def edit
@@ -46,7 +45,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :category, :category_id) #:category_id
+    params.require(:product).permit(:name, :description, :price, :category, :category_id)
   end
 
 end
