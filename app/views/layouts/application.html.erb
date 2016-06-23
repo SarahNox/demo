@@ -20,10 +20,11 @@
     <div id="items">
       <% if logged_in? %>
       <%= link_to "All Products", root_path %>
-      <%= link_to "Categories", root_path %>
+      <%= link_to "Categories", categories_path %>
         <% if current_user.admin? %>
         <%= link_to "Cart", cart_path %>
         <%= link_to "Add New Products", new_product_path %>
+        <%= link_to "Add New Category", new_category_path %>
         <% end %>
       <% end %>
     </div>

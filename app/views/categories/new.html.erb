@@ -1,0 +1,10 @@
+<div id="form">
+    <%= form_for(@category) do |f| %>
+
+      <%= f.label :category_name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.submit "Add New Category", class: "btn btn-primary" %>
+    <% end %>
+</div>
+

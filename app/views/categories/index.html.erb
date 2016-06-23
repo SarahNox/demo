@@ -3,18 +3,15 @@
 <table class="table">
 <tr>
   <th class= "col-sm-1"> Category </th>
-  <th class= "col-sm-1"> Product </th>
-  <th class= "col-sm-1"> Price </th>
-  <th class= "col-sm-3"> Description </th>
 </tr>
 
-<% @categories.each do |category| %>
+<% @categories.each do |category, product| %>
 <tr>
   <td><%= category.name %></td>
-  <td><%= product.title %></td>
-  <td><%= product.price %></td>
-  <td><%= product.decription %></td>
+  <td><%= link_to 'Show all Products', category_path(:id => category.id) %></td>
+  <td><% if current_user.admin? %>
+      <%= link_to 'Destroy', category, method: :delete %>
+      <% end %></td>
 </tr>
 <% end %>
 </table>
-

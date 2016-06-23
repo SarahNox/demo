@@ -1,7 +1,27 @@
-<% @category.products.each do |product| %>
-    <p>
-        <b>Product:</b>
-        <%= product.name %>
-    </p>
+<h1> Products by Category </h1>
+
+<table class="table">
+<tr>
+  <th class= "col-sm-1"> Product </th>
+  <th class= "col-sm-1"> Description </th>
+  <th class= "col-sm-1"> Price </th>
+</tr>
+
+<% @products.each do |product| %>
+<tr>
+  <td><%= product.name %></td>
+  <td><%= product.description %></td>
+  <td><%= product.price %></td>
+  <td><%= link_to 'Add to Cart', cart_path %></td>
+  <td><% if current_user.admin? %>
+    <%= link_to 'Edit', edit_product_path(:id => product.id) %>
+    <% end %></td>
+  <td><% if current_user.admin? %>
+    <%= link_to 'Destroy', product, method: :delete %>
+    <% end %></td>
+</tr>
 <% end %>
+</table>
+
+
 
