@@ -14,11 +14,11 @@
 </div>
 <div class="field">
   <%= f.label :category %><br>
-  <%= f.collection_select(:category_id, Category.all, :id, :name, :include_blank => "Please select") %>
+  <%= f.collection_select(:category_id, Category.all, :id, :name, {:include_blank => "Please select"}, {:required => true}) %>
 </div>
 
 
-<button type="submit" class="button">add item</button>
+<button type="submit" class="button"> SAVE </button>
 <% end %>
 </div>
 

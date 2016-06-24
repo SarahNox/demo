@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   post 'logout'  => 'sessions#destroy'
   get 'signup'  => 'users#new'
-  get 'cart' => 'cart#index'
+  resources :order_items, only: [:create, :update, :destroy]
+  resource :cart
+  get 'cart/:product_id/add_to_cart' => 'carts#add_to_cart' , :as => 'add_to_cart'
+  get 'cart/clear_cart' => 'carts#clear_cart', :as => 'clear_cart'
 
 end
