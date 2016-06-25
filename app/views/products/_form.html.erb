@@ -17,8 +17,8 @@
   <%= f.collection_select(:category_id, Category.all, :id, :name, {:include_blank => "Please select"}, {:required => true}) %>
 </div>
 
+<%= f.submit "SAVE", class: "btn btn-primary" %>
 
-<button type="submit" class="button"> SAVE </button>
 <% end %>
 </div>
 

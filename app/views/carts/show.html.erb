@@ -2,6 +2,9 @@
 
 <%= link_to 'Emtpy The Cart', clear_cart_path %>
 <% total = 0 %>
+
+<%= form_for :order do |f| %>
+
 <div id="table">
 <table class="table">
   <th class= "col-sm-2"> Product </th>
@@ -24,4 +27,7 @@
 </div>
 
 <p><b><%= total %> </b></p>
+
+<%= link_to 'Order', orders_path, method: :create %>
+<% end %>
 

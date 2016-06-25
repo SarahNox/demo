@@ -1,0 +1,22 @@
+<h1>Your Order</h1>
+
+<div id="table">
+<table class="table">
+<tr>
+  <th class= "col-sm-3"> Order </th>
+  <th class= "col-sm-3"> Created_at </th>
+  <th class= "col-sm-3"> Products </th>
+  <th class= "col-sm-3"> Quantity </th>
+</tr>
+<% @order.each do |order_items| %>
+<% @order_items.each do |product, quantity, price| %>
+<tr>
+  <td><%= product.name %></td>
+  <td><%= quantity %></td>
+  <td><%= product.price %></td>
+  <td><%= link_to 'View Order', order_path(:id => order_id) %></td>
+</tr>
+<% end %>
+<% end %>
+</table>
+</div>
