@@ -1,6 +1,27 @@
 <h1>Your Order</h1>
 
-<p>single order by order.id<p>
+<% total = 0 %>
+<div id="table">
+<table class="table">
+<tr>
+  <th> Order-ID </th>
+  <th> Product-ID </th>
+  <th> Quantity </th>
+  <th> Price </th>
+</tr>
 
+<% @order.order_items.each do |order_item| %>
 
+<tr>
+  <td><%= order_item.order_id %></td>
+  <td><%= Product.find(order_item.product_id).name %></td>
+  <td><%= order_item.quantity %></td>
+  <td><%= Product.find(order_item.product_id).price %></td>
+  <td><% total += order_item.quantity * Product.find(order_item.product_id).price %></td>
+</tr>
+<% end %>
 
+</table>
+</div>
+<p> TOTAL <p>
+<p><b><%= total %> </b></p>

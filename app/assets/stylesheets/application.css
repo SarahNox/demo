@@ -53,6 +53,10 @@ body {
   padding: 10px 500px 10px 500px;
 }
 
+#field {
+  padding: 10px 500px 10px 500px;
+}
+
 #row a{
   padding: -15px;
   text-align: center;

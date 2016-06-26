@@ -25,9 +25,9 @@
 <% end %>
 </table>
 </div>
-
+<p> TOTAL <p>
 <p><b><%= total %> </b></p>
 
-<%= link_to 'Order', orders_path, method: :create %>
+<%= link_to "<button>Order</button>".html_safe, orders_path, method: :create %>
 <% end %>
 
