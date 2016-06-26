@@ -25,5 +25,6 @@ class CartsController < ApplicationController
     session[:cart] = {}
     redirect_to cart_path
   end
+
 end
 
