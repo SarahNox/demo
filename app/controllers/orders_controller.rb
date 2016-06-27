@@ -4,9 +4,9 @@ class OrdersController < ApplicationController
   end
 
   def create 
-    # if session[:cart].empty?
-    #   redirect_to root_path
-    # else
+    if session[:cart].blank?
+      redirect_to root_path
+    else
       @order = Order.new
       @order.user = current_user
       session[:cart].each do |product_id, quantity|
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
       @order.save
       session[:cart] = nil
       redirect_to order_path(:id => @order.id)
-    # end
+    end
   end
 
   def show
