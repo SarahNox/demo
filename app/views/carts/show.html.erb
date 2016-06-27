@@ -1,16 +1,16 @@
 <h1>Your Cart</h1>
 
-<%= link_to 'Empty The Cart', clear_cart_path %>
+<%= link_to 'Empty The Cart', clear_cart_path, :class => "btn btn-warning"  %>
 <% total = 0 %>
 
 <%= form_for :order do |f| %>
 
 <div id="table">
 <table class="table">
-  <th class= "col-sm-2"> Product </th>
-  <th class= "col-sm-3"> Desciption </th>
-  <th class= "col-sm-2"> Quantity </th>
-  <th class= "col-sm-1"> Price </th
+  <th> Product </th>
+  <th> Desciption </th>
+  <th> Quantity </th>
+  <th> Price </th
 </tr>
 
 <% @cart.each do |product_id, quantity| %>
@@ -28,6 +28,6 @@
 <p> TOTAL <p>
 <p><b><%= total %> </b></p>
 
-<%= link_to "<button>Order</button>".html_safe, orders_path, method: :create %>
-<% end %>
+<%= link_to "Order".html_safe, orders_path, :method => :create, :class => "btn btn-primary" %>
 
+<% end %>

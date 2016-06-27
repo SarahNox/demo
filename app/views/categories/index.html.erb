@@ -2,15 +2,15 @@
 <div id="table">
 <table class="table">
 <tr>
-  <th class= "col-sm-3"> Category </th>
+  <th> Category </th> 
 </tr>
 
 <% @categories.each do |category, product| %>
 <tr>
   <td><%= category.name %></td>
-  <td><%= link_to 'Show all Products', category_path(:id => category.id) %></td>
+  <td><%= link_to 'Show all Products', category_path(:id => category.id), :class => "btn btn-primary"  %></td>
   <td><% if current_user.admin? %>
-      <%= link_to 'Destroy', category, method: :delete %>
+      <%= link_to 'Destroy', category, method: :delete, :class => "btn btn-warning"  %>
       <% end %></td>
 </tr>
 <% end %>
