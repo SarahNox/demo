@@ -2,16 +2,16 @@
 <div id="table">
 <table class="table">
 <tr>
-  <th class= "col-sm-3"> Order </th>
-  <th class= "col-sm-3"> Created_at </th>
-  <th class= "col-sm-3"> Products </th>
+  <th> Order </th>
+  <th> Created_at </th>
+  <th> Products </th>
 </tr>
 
 <% @orders.each do |order| %>
 <tr>
   <td><%= order.id %></td>
   <td><%= order.created_at.strftime("%d %b. %Y") %></td>
-  <td><%= link_to 'View Order', order_path(:id => order.id) %></td>
+  <td><%= link_to 'View Order', order_path(:id => order.id), :class => "btn btn-info"  %></td>
 </tr>
 <% end %>
 </table>

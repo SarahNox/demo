@@ -1,10 +1,10 @@
 <div id="table">
 <table class="table">
 <tr>
-  <th class= "col-sm-1"> Product </th>
-  <th class= "col-sm-3"> Description </th>
-  <th class= "col-sm-1"> Price </th>
-  <th class= "col-sm-1"> Category </th>
+  <th> Product </th>
+  <th> Description </th>
+  <th> Price </th>
+  <th> Category </th>
 </tr>
 
 <% @products.each do |product| %>
@@ -13,12 +13,12 @@
   <td><%= product.description %></td>
   <td><%= product.price %></td>
   <td><%= Category.find(product.category_id).name %></td>
-  <td><%= link_to 'Add to Cart', add_to_cart_path(product.id) %></td>
+  <td><%= link_to 'Add to Cart', add_to_cart_path(product.id), :class => "btn btn-primary" %></td>
   <td><% if current_user.admin? %>
-      <%= link_to 'Edit', edit_product_path(:id => product.id) %>
+      <%= link_to 'Edit', edit_product_path(:id => product.id), :class => "btn btn-info"  %>
       <% end %></td>
   <td><% if current_user.admin? %>
-      <%= link_to 'Destroy', product, method: :delete %>
+      <%= link_to 'Destroy', product, method: :delete, :class => "btn btn-warning"  %>
       <% end %></td>
 </tr>
 <% end %>
