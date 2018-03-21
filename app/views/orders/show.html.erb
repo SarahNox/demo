@@ -1,27 +1,43 @@
-<h1>Your Order</h1>
+<% shown_title = false %>
+  <% @order.order_items.each do |order_item| %>
+    <% unless shown_title %>
+      <h1>Your Order <%= order_item.order_id %></h1>
+      <% shown_title = true %>
+    <% end %>
+  <% end %>
+
 
 <% total = 0 %>
 <div id="table">
-<table class="table">
-<tr>
-  <th> Order-ID </th>
-  <th> Product-ID </th>
-  <th> Quantity </th>
-  <th> Price </th>
-</tr>
+  <table class="table">
+    <tr>
+      <th> Product-ID </th>
+      <th> Quantity </th>
+      <th> Price </th>
+    </tr>
 
-<% @order.order_items.each do |order_item| %>
+    <% @order.order_items.each do |order_item| %>
 
-<tr>
-  <td><%= order_item.order_id %></td>
-  <td><%= Product.find(order_item.product_id).name %></td>
-  <td><%= order_item.quantity %></td>
-  <td><%= Product.find(order_item.product_id).price %></td>
-  <td><% total += order_item.quantity * Product.find(order_item.product_id).price %></td>
-</tr>
-<% end %>
+    <tr>
+      <td><% if Product.find_by_id(order_item.product_id).nil? %>
+            <%= 'Product not available' %>
+          <% else %>
+            <%= Product.find(order_item.product_id).name %>
+          <% end %></td>    
+      <td><%= order_item.quantity %></td>
+      <td><% if Product.find_by_id(order_item.product_id).nil? %>
+            <%= '%' %>
+          <% else %>
+            <%= Product.find(order_item.product_id).price %>
+          <% end %></td>
+      <td><% if Product.find_by_id(order_item.product_id).nil? %>
+            <%= 'Out Of Stock' %>
+          <% else %>
+            <% total += order_item.quantity * Product.find(order_item.product_id).price %><% end %></td>
+    </tr>
+    <% end %>
 
-</table>
+  </table>
 </div>
 <p> TOTAL <p>
 <p><b><%= total %> </b></p>
